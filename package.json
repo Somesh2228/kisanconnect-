@@ -1,99 +1,40 @@
 {
-  "name": "kisan-circle",
-  "version": "1.0.0",
-  "description": "Connecting farmers, government agriculture authorities, and research institutions in a collaborative ecosystem",
-  "main": "index.js",
-  "scripts": {
-    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
-    "build": "npm run frontend:build && npm run backend:build",
-    "start": "npm run backend:start",
-    "test": "npm run test:unit && npm run test:integration",
-    "test:unit": "jest tests/unit",
-    "test:integration": "jest tests/integration",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "format": "prettier --write .",
-    "db:setup": "npm run db:create && npm run db:migrate",
-    "db:create": "node scripts/create-databases.js",
-    "db:migrate": "node scripts/run-migrations.js",
-    "db:seed": "node scripts/seed-database.js",
-    "db:reset": "npm run db:drop && npm run db:setup && npm run db:seed",
-    "db:drop": "node scripts/drop-databases.js",
-    "frontend:dev": "cd frontend && npm run dev",
-    "frontend:build": "cd frontend && npm run build",
-    "backend:dev": "cd backend && npm run dev",
-    "backend:build": "cd backend && npm run build",
-    "backend:start": "cd backend && npm start",
-    "mobile:dev": "cd mobile && npm run start",
-    "mobile:build": "cd mobile && npm run build",
-    "admin:dev": "cd admin && npm run dev",
-    "admin:build": "cd admin && npm run build",
-    "docker:dev": "docker-compose -f docker-compose.dev.yml up",
-    "docker:prod": "docker-compose -f docker-compose.prod.yml up",
-    "prepare": "husky install"
-  },
-  "keywords": [
-    "agriculture",
-    "farming",
-    "india",
-    "farmers",
-    "community",
-    "government",
-    "research",
-    "multilingual",
-    "rural",
-    "digital-agriculture"
-  ],
-  "author": "Kisan Circle Team",
+  "name": "@babel/compat-data",
+  "version": "7.28.4",
+  "author": "The Babel Team (https://babel.dev/team)",
   "license": "MIT",
+  "description": "The compat-data to determine required Babel plugins",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/kisan-circle.git"
+    "url": "https://github.com/babel/babel.git",
+    "directory": "packages/babel-compat-data"
   },
-  "bugs": {
-    "url": "https://github.com/your-org/kisan-circle/issues"
+  "publishConfig": {
+    "access": "public"
   },
-  "homepage": "https://kisancircle.in",
-  "devDependencies": {
-    "@types/jest": "^29.5.5",
-    "@types/node": "^20.6.2",
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
-    "@typescript-eslint/parser": "^6.7.0",
-    "concurrently": "^8.2.1",
-    "eslint": "^8.49.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.3",
-    "jest": "^29.7.0",
-    "lint-staged": "^14.0.1",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2"
+  "exports": {
+    "./plugins": "./plugins.js",
+    "./native-modules": "./native-modules.js",
+    "./corejs2-built-ins": "./corejs2-built-ins.js",
+    "./corejs3-shipped-proposals": "./corejs3-shipped-proposals.js",
+    "./overlapping-plugins": "./overlapping-plugins.js",
+    "./plugin-bugfixes": "./plugin-bugfixes.js"
   },
-  "dependencies": {
-    "dotenv": "^16.3.1"
+  "scripts": {
+    "build-data": "./scripts/download-compat-table.sh && node ./scripts/build-data.mjs && node ./scripts/build-modules-support.mjs && node ./scripts/build-bugfixes-targets.mjs"
   },
-  "workspaces": [
-    "frontend",
-    "backend",
-    "mobile",
-    "admin"
+  "keywords": [
+    "babel",
+    "compat-table",
+    "compat-data"
   ],
+  "devDependencies": {
+    "@mdn/browser-compat-data": "^6.0.8",
+    "core-js-compat": "^3.43.0",
+    "electron-to-chromium": "^1.5.140"
+  },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
+    "node": ">=6.9.0"
   },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md,yml,yaml}": [
-      "prettier --write"
-    ]
-  },
-  "volta": {
-    "node": "18.18.0",
-    "npm": "9.8.1"
-  }
+  "type": "commonjs"
 }
