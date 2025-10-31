@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes - Kisan Circle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-seedling"></i>
+                    <span data-translate="site-name">Kisan Circle</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link" data-translate="nav-home">Home</a></li>
+                    <li><a href="community.html" class="nav-link" data-translate="nav-community">Community</a></li>
+                    <li><a href="experts.html" class="nav-link" data-translate="nav-experts">Experts</a></li>
+                    <li><a href="schemes.html" class="nav-link active" data-translate="nav-schemes">Schemes</a></li>
+                    <li><a href="#messages" class="nav-link" data-translate="nav-messages">Messages</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="language-selector">
+                        <select id="languageSelect">
+                            <option value="en">English</option>
+                            <option value="hi">हिंदी</option>
+                            <option value="mr">मराठी</option>
+                            <option value="gu">ગુજરાતી</option>
+                        </select>
+                    </div>
+                    <div class="user-actions" id="userActions">
+                        <a href="login.html" class="btn btn-primary login-btn" data-translate="login">Login</a>
+                        <a href="register.html" class="btn btn-secondary signup-btn" data-translate="signup">Sign Up</a>
+                    </div>
+                    <div class="user-profile" id="userProfile" style="display: none;">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <span class="username" id="currentUsername">Farmer</span>
+                        <div class="profile-dropdown">
+                            <a href="#" data-translate="my-profile">My Profile</a>
+                            <a href="#" data-translate="my-posts">My Posts</a>
+                            <a href="#" data-translate="settings">Settings</a>
+                            <a href="#" data-translate="logout" id="logoutBtn">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Schemes Section -->
+    <section class="schemes-page" style="padding-top: 100px;">
+        <div class="container">
+            <div class="schemes-header">
+                <h1 data-translate="schemes-page-title">Government Agriculture Schemes</h1>
+                <p data-translate="schemes-page-subtitle">Explore comprehensive information about government schemes, subsidies, and support programs designed to empower farmers across India.</p>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="schemes-stats">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="stat-info">
+                        <h3>50+</h3>
+                        <p>Active Schemes</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-rupee-sign"></i></div>
+                    <div class="stat-info">
+                        <h3>₹2.8L Cr</h3>
+                        <p>Total Budget</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-info">
+                        <h3>12Cr+</h3>
+                        <p>Beneficiaries</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="stat-info">
+                        <h3>28</h3>
+                        <p>States Covered</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="schemes-filter">
+                <div class="filter-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="schemeSearch" placeholder="Search schemes by name, benefits, or eligibility..." data-translate="search-schemes">
+                </div>
+                <div class="filter-categories">
+                    <button class="category-btn active" data-category="all" data-translate="all-schemes">All Schemes</button>
+                    <button class="category-btn" data-category="financial" data-translate="financial-support">Financial Support</button>
+                    <button class="category-btn" data-category="insurance" data-translate="insurance-schemes">Insurance</button>
+                    <button class="category-btn" data-category="subsidy" data-translate="subsidies">Subsidies</button>
+                    <button class="category-btn" data-category="technology" data-translate="technology">Technology</button>
+                    <button class="category-btn" data-category="infrastructure" data-translate="infrastructure">Infrastructure</button>
+                </div>
+            </div>
+
+            <!-- Featured Schemes -->
+            <div class="featured-schemes">
+                <h2 data-translate="featured-schemes">Featured Schemes</h2>
+                <div class="schemes-carousel" id="featuredSchemes">
+                    <!-- Featured schemes will be loaded by JavaScript -->
+                </div>
+            </div>
+
+            <!-- All Schemes -->
+            <div class="all-schemes">
+                <h2 data-translate="all-schemes-title">All Government Schemes</h2>
+                <div class="schemes-grid" id="schemesGrid">
+                    <!-- All schemes will be loaded by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Application Process -->
+            <div class="application-process">
+                <h2 data-translate="how-to-apply">How to Apply for Schemes</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 data-translate="step-1-title">Check Eligibility</h3>
+                            <p data-translate="step-1-desc">Review scheme requirements and ensure you meet all eligibility criteria</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 data-translate="step-2-title">Gather Documents</h3>
+                            <p data-translate="step-2-desc">Collect all required documents including land records, identity proof, and bank details</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 data-translate="step-3-title">Submit Application</h3>
+                            <p data-translate="step-3-desc">Apply online through official portals or visit nearest agriculture office</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 data-translate="step-4-title">Track Status</h3>
+                            <p data-translate="step-4-desc">Monitor application progress and receive benefits directly in your bank account</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .schemes-page {
+            background: #F8F9FA;
+            min-height: 100vh;
+        }
+
+        .schemes-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .schemes-header h1 {
+            font-size: 3rem;
+            color: #1B5E20;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .schemes-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .schemes-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #F1F8E9;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: #4CAF50;
+            transform: translateY(-3px);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .stat-info h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1B5E20;
+            margin: 0 0 0.5rem;
+        }
+
+        .stat-info p {
+            color: #666;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .schemes-filter {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .filter-search {
+            position: relative;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .filter-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4CAF50;
+            font-size: 1.2rem;
+        }
+
+        .filter-search input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #E8F5E8;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            background: #F9FBE7;
+            transition: all 0.3s ease;
+        }
+
+        .filter-search input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .filter-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: #F1F8E9;
+            color: #2E7D32;
+            border: 2px solid #E8F5E8;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .featured-schemes {
+            margin-bottom: 4rem;
+        }
+
+        .featured-schemes h2 {
+            text-align: center;
+            color: #1B5E20;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .schemes-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .all-schemes h2 {
+            text-align: center;
+            color: #1B5E20;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .schemes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .scheme-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 2px solid #F1F8E9;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .scheme-card:hover {
+            border-color: #4CAF50;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.2);
+        }
+
+        .scheme-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .scheme-type {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .scheme-card h3 {
+            color: #1B5E20;
+            font-size: 1.4rem;
+            margin: 0 0 0.5rem;
+            font-weight: 600;
+        }
+
+        .scheme-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .scheme-details {
+            margin-bottom: 2rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: #333;
+        }
+
+        .detail-item i {
+            color: #4CAF50;
+            width: 20px;
+        }
+
+        .scheme-benefits {
+            margin-bottom: 1.5rem;
+        }
+
+        .scheme-benefits h4 {
+            color: #2E7D32;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            padding: 0.3rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .benefits-list li::before {
+            content: "✓";
+            color: #4CAF50;
+            font-weight: 600;
+            position: absolute;
+            left: 0;
+        }
+
+        .scheme-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .scheme-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .btn-apply {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+        }
+
+        .btn-apply:hover {
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+            transform: translateY(-2px);
+        }
+
+        .btn-details {
+            background: transparent;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+        }
+
+        .btn-details:hover {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);
+        }
+
+        .application-process {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 2px solid #F1F8E9;
+            margin-top: 4rem;
+        }
+
+        .application-process h2 {
+            text-align: center;
+            color: #1B5E20;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-content h3 {
+            color: #1B5E20;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .step-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .schemes-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .schemes-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .filter-categories {
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .category-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .scheme-actions {
+                flex-direction: column;
+            }
+
+            .scheme-btn {
+                min-width: auto;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="dummy-data.js"></script>
+    <script src="messaging.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSchemes();
+            setupFilters();
+            setupSearch();
+            checkUserStatus();
+            addSchemeApplicationsSection();
+        });
+        
+        function addSchemeApplicationsSection() {
+            // Add a section showing scheme applications by farmers
+            const processSection = document.querySelector('.application-process');
+            const applicationsHTML = `
+                <div class="scheme-applications">
+                    <div class="container">
+                        <h2>Recent Applications</h2>
+                        <p>See how farmers in your community are benefiting from government schemes</p>
+                        <div class="applications-grid">
+                            ${generateSchemeApplications().map(app => `
+                                <div class="application-card">
+                                    <div class="applicant-info">
+                                        <div class="applicant-avatar">${app.farmer.avatar}</div>
+                                        <div>
+                                            <h4>${app.farmer.name}</h4>
+                                            <p>${app.farmer.location}</p>
+                                        </div>
+                                    </div>
+                                    <div class="scheme-info">
+                                        <h4>${app.scheme}</h4>
+                                        <div class="application-status ${app.status.toLowerCase().replace(' ', '-')}">
+                                            <i class="fas ${app.status === 'Approved' ? 'fa-check-circle' : app.status === 'Pending' ? 'fa-clock' : 'fa-hourglass-half'}"></i>
+                                            ${app.status}
+                                        </div>
+                                        <div class="application-details">
+                                            <span><i class="fas fa-calendar"></i> Applied: ${app.appliedDate}</span>
+                                            <span><i class="fas fa-rupee-sign"></i> Amount: ${app.amount}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            processSection.insertAdjacentHTML('afterend', applicationsHTML);
+        }
+        
+        function generateSchemeApplications() {
+            const applications = [];
+            const schemes = ['PM-KISAN', 'Crop Insurance', 'PM-KUSUM', 'Kisan Credit Card', 'Soil Health Card'];
+            const statuses = ['Approved', 'Pending', 'Under Review'];
+            const amounts = ['₹6,000', '₹15,000', '₹45,000', '₹2,50,000', '₹500'];
+            
+            for (let i = 0; i < 6; i++) {
+                const farmer = DummyData.users[Math.floor(Math.random() * DummyData.users.length)];
+                const scheme = schemes[Math.floor(Math.random() * schemes.length)];
+                const status = statuses[Math.floor(Math.random() * statuses.length)];
+                const amount = amounts[Math.floor(Math.random() * amounts.length)];
+                const daysAgo = Math.floor(Math.random() * 30) + 1;
+                
+                applications.push({
+                    farmer: farmer,
+                    scheme: scheme,
+                    status: status,
+                    amount: amount,
+                    appliedDate: daysAgo + ' days ago'
+                });
+            }
+            
+            return applications;
+        }
+
+        function loadSchemes() {
+            const schemes = [
+                {
+                    id: 1,
+                    name: "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+                    type: "Financial Support",
+                    category: "financial",
+                    description: "Direct income support scheme providing ₹6,000 per year to landholding farmers in three equal installments of ₹2,000 each.",
+                    benefits: [
+                        "₹6,000 per year direct benefit transfer",
+                        "No income criteria or land size limit",
+                        "Automatic enrollment for eligible farmers",
+                        "Quick and easy online application"
+                    ],
+                    eligibility: "All landholding farmers",
+                    documents: "Aadhaar Card, Bank Account Details, Land Records",
+                    budget: "₹75,000 Crores (2024-25)",
+                    beneficiaries: "12+ Crore farmers",
+                    featured: true,
+                    applicationUrl: "https://pmkisan.gov.in/"
+                },
+                {
+                    id: 2,
+                    name: "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+                    type: "Insurance",
+                    category: "insurance",
+                    description: "Comprehensive crop insurance scheme protecting farmers against crop loss due to natural calamities, pests, and diseases.",
+                    benefits: [
+                        "Premium subsidy up to 90%",
+                        "Coverage for all food crops, oilseeds, and horticultural crops",
+                        "Quick claim settlement within 60 days",
+                        "Use of technology for accurate assessment"
+                    ],
+                    eligibility: "All farmers including tenant farmers and sharecroppers",
+                    documents: "Aadhaar Card, Bank Account, Sowing Certificate, Land Records",
+                    budget: "₹15,695 Crores (2024-25)",
+                    beneficiaries: "5.5 Crore farmers",
+                    featured: true,
+                    applicationUrl: "https://pmfby.gov.in/"
+                },
+                {
+                    id: 3,
+                    name: "Kisan Credit Card (KCC)",
+                    type: "Financial Support",
+                    category: "financial",
+                    description: "Credit support scheme providing adequate and timely credit to farmers for agricultural activities and allied activities.",
+                    benefits: [
+                        "Flexible credit limit based on land holding",
+                        "Simple documentation and quick processing",
+                        "Interest subvention benefit",
+                        "Insurance coverage for crops and farmer"
+                    ],
+                    eligibility: "Land-owning farmers, tenant farmers, sharecroppers",
+                    documents: "Land Records, Identity Proof, Address Proof, Bank Account",
+                    budget: "₹4.5 Lakh Crore credit target",
+                    beneficiaries: "7+ Crore farmers",
+                    featured: false,
+                    applicationUrl: "https://www.nabard.org/kcc.aspx"
+                },
+                {
+                    id: 4,
+                    name: "Soil Health Card Scheme",
+                    type: "Technology",
+                    category: "technology",
+                    description: "Provides soil health cards to farmers with crop-wise nutrient recommendations for improving productivity and soil health.",
+                    benefits: [
+                        "Free soil testing for all farmers",
+                        "Customized fertilizer recommendations",
+                        "Improved crop productivity",
+                        "Reduced input costs"
+                    ],
+                    eligibility: "All farmers",
+                    documents: "Land Records, Contact Details",
+                    budget: "₹568 Crores",
+                    beneficiaries: "24+ Crore farmers",
+                    featured: false,
+                    applicationUrl: "https://soilhealth.dac.gov.in/"
+                },
+                {
+                    id: 5,
+                    name: "PM-KUSUM (Solar Agriculture Scheme)",
+                    type: "Subsidy",
+                    category: "subsidy",
+                    description: "Provides solar pumps and grid-connected solar power plants for farmers to reduce diesel dependency and provide additional income.",
+                    benefits: [
+                        "90% subsidy on solar pumps",
+                        "Additional income through solar power sale",
+                        "Reduced electricity/diesel costs",
+                        "Environment-friendly farming"
+                    ],
+                    eligibility: "Individual farmers, FPOs, cooperatives",
+                    documents: "Land Records, Electricity Connection Proof, Bank Account",
+                    budget: "₹34,422 Crores",
+                    beneficiaries: "35 Lakh farmers",
+                    featured: true,
+                    applicationUrl: "https://pmkusum.mnre.gov.in/"
+                },
+                {
+                    id: 6,
+                    name: "National Agriculture Market (e-NAM)",
+                    type: "Infrastructure",
+                    category: "infrastructure",
+                    description: "Online trading platform connecting APMCs across the country for transparent price discovery and better market access.",
+                    benefits: [
+                        "Better price realization for farmers",
+                        "Transparent bidding process",
+                        "Real-time market prices",
+                        "Quality assurance through testing"
+                    ],
+                    eligibility: "All farmers selling in integrated markets",
+                    documents: "Farmer Registration, Quality Testing Certificate",
+                    budget: "₹200 Crores",
+                    beneficiaries: "1.77 Crore farmers",
+                    featured: false,
+                    applicationUrl: "https://enam.gov.in/"
+                },
+                {
+                    id: 7,
+                    name: "Pradhan Mantri Krishi Sinchai Yojana (PMKSY)",
+                    type: "Infrastructure",
+                    category: "infrastructure",
+                    description: "Water conservation and irrigation infrastructure development scheme focusing on 'Har Khet Ko Pani' (water to every field).",
+                    benefits: [
+                        "Micro irrigation subsidy up to 55%",
+                        "Improved water use efficiency",
+                        "Higher crop productivity",
+                        "Watershed development support"
+                    ],
+                    eligibility: "All categories of farmers",
+                    documents: "Land Records, Water Source Proof, Project Report",
+                    budget: "₹93,068 Crores",
+                    beneficiaries: "15+ Lakh farmers",
+                    featured: false,
+                    applicationUrl: "https://pmksy.gov.in/"
+                },
+                {
+                    id: 8,
+                    name: "Formation and Promotion of FPOs",
+                    type: "Financial Support",
+                    category: "financial",
+                    description: "Support for formation of 10,000 Farmer Producer Organizations (FPOs) to improve farmers' access to markets and technology.",
+                    benefits: [
+                        "Financial assistance up to ₹18 Lakh per FPO",
+                        "Better bargaining power",
+                        "Access to credit and markets",
+                        "Technology and input support"
+                    ],
+                    eligibility: "Groups of farmers forming FPOs",
+                    documents: "FPO Registration, Member Details, Business Plan",
+                    budget: "₹6,865 Crores",
+                    beneficiaries: "10,000 FPOs covering 2 Crore farmers",
+                    featured: false,
+                    applicationUrl: "https://sfac.in/fpo/"
+                }
+            ];
+
+            renderFeaturedSchemes(schemes.filter(scheme => scheme.featured));
+            renderAllSchemes(schemes);
+        }
+
+        function renderFeaturedSchemes(schemes) {
+            const container = document.getElementById('featuredSchemes');
+            container.innerHTML = '';
+            
+            schemes.forEach(scheme => {
+                const schemeCard = createSchemeCard(scheme, true);
+                container.appendChild(schemeCard);
+            });
+        }
+
+        function renderAllSchemes(schemes) {
+            const container = document.getElementById('schemesGrid');
+            container.innerHTML = '';
+            
+            schemes.forEach(scheme => {
+                const schemeCard = createSchemeCard(scheme, false);
+                container.appendChild(schemeCard);
+            });
+        }
+
+        function createSchemeCard(scheme, isFeatured) {
+            const card = document.createElement('div');
+            card.className = 'scheme-card';
+            card.dataset.category = scheme.category;
+            
+            const featuredBadge = isFeatured ? '<div class="featured-badge">Featured</div>' : '';
+
+            card.innerHTML = `
+                ${featuredBadge}
+                <div class="scheme-header">
+                    <div class="scheme-type">${scheme.type}</div>
+                    <h3>${scheme.name}</h3>
+                </div>
+                <p class="scheme-description">${scheme.description}</p>
+                <div class="scheme-details">
+                    <div class="detail-item">
+                        <i class="fas fa-users"></i>
+                        <span><strong>Beneficiaries:</strong> ${scheme.beneficiaries}</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span><strong>Budget:</strong> ${scheme.budget}</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-user-check"></i>
+                        <span><strong>Eligibility:</strong> ${scheme.eligibility}</span>
+                    </div>
+                </div>
+                <div class="scheme-benefits">
+                    <h4>Key Benefits:</h4>
+                    <ul class="benefits-list">
+                        ${scheme.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="scheme-actions">
+                    <button class="scheme-btn btn-apply" onclick="applyForScheme('${scheme.name}', '${scheme.applicationUrl}')">
+                        <i class="fas fa-external-link-alt"></i> Apply Now
+                    </button>
+                    <button class="scheme-btn btn-details" onclick="viewSchemeDetails('${scheme.name}')">
+                        <i class="fas fa-info-circle"></i> View Details
+                    </button>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function setupFilters() {
+            const filterBtns = document.querySelectorAll('.category-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const category = btn.dataset.category;
+                    filterSchemes(category);
+                });
+            });
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('schemeSearch');
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                searchSchemes(searchTerm);
+            });
+        }
+
+        function filterSchemes(category) {
+            const schemeCards = document.querySelectorAll('.scheme-card');
+            schemeCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            showNotification(`Showing ${category === 'all' ? 'all' : category} schemes`, 'info');
+        }
+
+        function searchSchemes(searchTerm) {
+            const schemeCards = document.querySelectorAll('.scheme-card');
+            schemeCards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function applyForScheme(schemeName, applicationUrl) {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (!currentUser) {
+                showNotification('Please login to apply for schemes!', 'info');
+                setTimeout(() => window.location.href = 'login.html', 1000);
+                return;
+            }
+            
+            showNotification(`Redirecting to ${schemeName} application portal...`, 'success');
+            // In a real application, this would open the official government portal
+            setTimeout(() => {
+                showNotification('This would redirect to the official government portal in a real application.', 'info');
+            }, 2000);
+        }
+
+        function viewSchemeDetails(schemeName) {
+            showNotification(`Loading detailed information for ${schemeName}...`, 'info');
+            // In a real application, this would open a detailed scheme page
+        }
+
+        function checkUserStatus() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (currentUser) {
+                document.getElementById('userActions').style.display = 'none';
+                document.getElementById('userProfile').style.display = 'flex';
+                document.getElementById('currentUsername').textContent = currentUser.name.split(' ')[0];
+            }
+        }
+
+        // Notification system
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 3000;
+                animation: slideInRight 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    document.body.removeChild(notification);
+                }
+            }, 4000);
+        }
+
+        // Add animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            .scheme-applications {
+                background: #F8F9FA;
+                padding: 4rem 0;
+                margin: 4rem 0;
+            }
+            
+            .scheme-applications h2 {
+                text-align: center;
+                color: #1B5E20;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .scheme-applications p {
+                text-align: center;
+                color: #666;
+                margin-bottom: 3rem;
+                font-size: 1.1rem;
+            }
+            
+            .applications-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2rem;
+            }
+            
+            .application-card {
+                background: white;
+                border-radius: 15px;
+                padding: 2rem;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                border: 2px solid #F1F8E9;
+                transition: all 0.3s ease;
+            }
+            
+            .application-card:hover {
+                border-color: #4CAF50;
+                transform: translateY(-3px);
+            }
+            
+            .applicant-info {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .applicant-avatar {
+                width: 50px;
+                height: 50px;
+                background: linear-gradient(135deg, #4CAF50, #81C784);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: 600;
+                font-size: 1.2rem;
+            }
+            
+            .applicant-info h4 {
+                color: #1B5E20;
+                margin: 0 0 0.25rem;
+                font-size: 1.1rem;
+            }
+            
+            .applicant-info p {
+                color: #666;
+                margin: 0;
+                font-size: 0.9rem;
+                text-align: left;
+            }
+            
+            .scheme-info h4 {
+                color: #2E7D32;
+                margin: 0 0 1rem;
+                font-size: 1.2rem;
+            }
+            
+            .application-status {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem 1rem;
+                border-radius: 20px;
+                font-weight: 600;
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+            
+            .application-status.approved {
+                background: #E8F5E8;
+                color: #2E7D32;
+            }
+            
+            .application-status.pending {
+                background: #FFF3E0;
+                color: #F57C00;
+            }
+            
+            .application-status.under-review {
+                background: #E3F2FD;
+                color: #1976D2;
+            }
+            
+            .application-details {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .application-details span {
+                color: #666;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .application-details i {
+                color: #4CAF50;
+                width: 16px;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

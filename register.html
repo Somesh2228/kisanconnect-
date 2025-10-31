@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Kisan Circle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Register Page Specific Styles */
+        .register-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .register-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 700px;
+        }
+        
+        .register-banner {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .register-banner i {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #81C784;
+        }
+        
+        .register-banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .register-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .register-form-container {
+            padding: 2rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 700px;
+            overflow-y: auto;
+        }
+        
+        .register-form-container h2 {
+            color: #1B5E20;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .register-subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #2E7D32;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #E8F5E8;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: #F9FBE7;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+        
+        .register-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1.5rem 0;
+        }
+        
+        .register-btn:hover {
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.3);
+        }
+        
+        .login-link {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #E8F5E8;
+        }
+        
+        .login-link a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .login-link a:hover {
+            color: #2E7D32;
+        }
+        
+        .back-to-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(-5px);
+        }
+        
+        /* Language Selector for Register Page */
+        .register-language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .register-language-selector select {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+        
+        .register-language-selector select option {
+            background: #2E7D32;
+            color: white;
+        }
+        
+        .required {
+            color: #f44336;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .register-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            
+            .register-banner {
+                padding: 2rem;
+                min-height: 200px;
+            }
+            
+            .register-banner h1 {
+                font-size: 2rem;
+            }
+            
+            .register-form-container {
+                padding: 2rem;
+                max-height: none;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-to-home {
+                position: static;
+                margin-bottom: 1rem;
+                align-self: flex-start;
+            }
+            
+            .register-language-selector {
+                position: static;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-page">
+        <a href="index.html" class="back-to-home">
+            <i class="fas fa-arrow-left"></i>
+            <span data-translate="back-to-home">Back to Home</span>
+        </a>
+        
+        <div class="register-language-selector">
+            <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+                <option value="mr">मराठी</option>
+                <option value="gu">ગુજરાતી</option>
+            </select>
+        </div>
+        
+        <div class="register-container">
+            <div class="register-banner">
+                <i class="fas fa-users"></i>
+                <h1 data-translate="join-community">Join Our Community!</h1>
+                <p data-translate="register-banner-text">Start your journey with India's largest digital agriculture community. Connect with farmers, experts, and grow your knowledge.</p>
+            </div>
+            
+            <div class="register-form-container">
+                <h2 data-translate="create-account">Create Your Account</h2>
+                <p class="register-subtitle" data-translate="register-subtitle">Fill in your details to join Kisan Circle</p>
+                
+                <form id="registerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-translate="full-name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="signupName" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label data-translate="phone-number">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="signupPhone" required placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-translate="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="signupEmail" required placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-translate="location">Location <span class="required">*</span></label>
+                        <input type="text" id="signupLocation" required placeholder="District, State">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-translate="farming-experience">Farming Experience <span class="required">*</span></label>
+                            <select id="signupExperience" required>
+                                <option value="" data-translate="select-experience">Select Experience</option>
+                                <option value="beginner" data-translate="beginner">Beginner (0-2 years)</option>
+                                <option value="intermediate" data-translate="intermediate">Intermediate (3-10 years)</option>
+                                <option value="experienced" data-translate="experienced">Experienced (10+ years)</option>
+                                <option value="expert" data-translate="expert">Expert/Consultant</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label data-translate="land-size">Farm Size (Acres)</label>
+                            <input type="number" id="signupLandSize" placeholder="Enter farm size" min="0" step="0.1">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-translate="primary-crops">Primary Crops <span class="required">*</span></label>
+                        <input type="text" id="signupCrops" placeholder="e.g., Rice, Wheat, Cotton" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-translate="password">Password <span class="required">*</span></label>
+                            <input type="password" id="signupPassword" required placeholder="Create a strong password">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label data-translate="confirm-password">Confirm Password <span class="required">*</span></label>
+                            <input type="password" id="confirmPassword" required placeholder="Confirm your password">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="register-btn" data-translate="create-account-btn">Create Kisan Circle Account</button>
+                    
+                    <div class="login-link">
+                        <span data-translate="have-account">Already have an account?</span>
+                        <a href="login.html" data-translate="login-here">Login here</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Translation system for register page
+        const translations = {
+            'en': {
+                'back-to-home': 'Back to Home',
+                'join-community': 'Join Our Community!',
+                'register-banner-text': 'Start your journey with India\'s largest digital agriculture community. Connect with farmers, experts, and grow your knowledge.',
+                'create-account': 'Create Your Account',
+                'register-subtitle': 'Fill in your details to join Kisan Circle',
+                'full-name': 'Full Name',
+                'phone-number': 'Phone Number',
+                'email': 'Email Address',
+                'location': 'Location',
+                'farming-experience': 'Farming Experience',
+                'land-size': 'Farm Size (Acres)',
+                'primary-crops': 'Primary Crops',
+                'password': 'Password',
+                'confirm-password': 'Confirm Password',
+                'select-experience': 'Select Experience',
+                'beginner': 'Beginner (0-2 years)',
+                'intermediate': 'Intermediate (3-10 years)',
+                'experienced': 'Experienced (10+ years)',
+                'expert': 'Expert/Consultant',
+                'create-account-btn': 'Create Kisan Circle Account',
+                'have-account': 'Already have an account?',
+                'login-here': 'Login here'
+            },
+            'hi': {
+                'back-to-home': 'होम पर वापस जाएं',
+                'join-community': 'हमारे समुदाय में शामिल हों!',
+                'register-banner-text': 'भारत के सबसे बड़े डिजिटल कृषि समुदाय के साथ अपनी यात्रा शुरू करें। किसानों, विशेषज्ञों से जुड़ें और अपना ज्ञान बढ़ाएं।',
+                'create-account': 'अपना खाता बनाएं',
+                'register-subtitle': 'किसान सर्कल में शामिल होने के लिए अपनी जानकारी भरें',
+                'full-name': 'पूरा नाम',
+                'phone-number': 'फोन नंबर',
+                'email': 'ईमेल पता',
+                'location': 'स्थान',
+                'farming-experience': 'कृषि अनुभव',
+                'land-size': 'खेत का आकार (एकड़)',
+                'primary-crops': 'मुख्य फसलें',
+                'password': 'पासवर्ड',
+                'confirm-password': 'पासवर्ड की पुष्टि करें',
+                'select-experience': 'अनुभव चुनें',
+                'beginner': 'शुरुआती (0-2 साल)',
+                'intermediate': 'मध्यम (3-10 साल)',
+                'experienced': 'अनुभवी (10+ साल)',
+                'expert': 'विशेषज्ञ/सलाहकार',
+                'create-account-btn': 'किसान सर्कल खाता बनाएं',
+                'have-account': 'पहले से खाता है?',
+                'login-here': 'यहाँ लॉगिन करें'
+            },
+            'mr': {
+                'back-to-home': 'घरी परत जा',
+                'join-community': 'आमच्या समुदायात सामील व्हा!',
+                'register-banner-text': 'भारताच्या सर्वात मोठ्या डिजिटल कृषी समुदायासह तुमचा प्रवास सुरू करा. शेतकरी, तज्ञांशी जुडा आणि तुमचे ज्ञान वाढवा.',
+                'create-account': 'आपले खाते तयार करा',
+                'register-subtitle': 'किसान सर्कलमध्ये सामील होण्यासाठी तुमचे तपशील भरा',
+                'full-name': 'पूर्ण नाव',
+                'phone-number': 'फोन नंबर',
+                'email': 'ईमेल पत्ता',
+                'location': 'स्थान',
+                'farming-experience': 'शेतीचा अनुभव',
+                'land-size': 'शेताचा आकार (एकर)',
+                'primary-crops': 'मुख्य पिके',
+                'password': 'पासवर्ड',
+                'confirm-password': 'पासवर्डची पुष्टी करा',
+                'select-experience': 'अनुभव निवडा',
+                'beginner': 'नवशिक्या (0-2 वर्षे)',
+                'intermediate': 'मध्यम (3-10 वर्षे)',
+                'experienced': 'अनुभवी (10+ वर्षे)',
+                'expert': 'तज्ञ/सल्लागार',
+                'create-account-btn': 'किसान सर्कल खाते तयार करा',
+                'have-account': 'आधीपासूनच खाते आहे?',
+                'login-here': 'इथे लॉगिन करा'
+            },
+            'gu': {
+                'back-to-home': 'ઘર પાછા જાઓ',
+                'join-community': 'અમારા સમુદાયમાં જોડાઓ!',
+                'register-banner-text': 'ભારતના સૌથી મોટા ડિજિટલ કૃષિ સમુદાય સાથે તમારી યાત્રા શરૂ કરો. ખેડૂતો, નિષ્ણાતો સાથે જોડાઓ અને તમારું જ્ઞાન વધારો.',
+                'create-account': 'તમારું ખાતું બનાવો',
+                'register-subtitle': 'કિસાન સર્કલમાં જોડાવા માટે તમારી વિગતો ભરો',
+                'full-name': 'પૂર્ણ નામ',
+                'phone-number': 'ફોન નંબર',
+                'email': 'ઈમેલ સરનામું',
+                'location': 'સ્થાન',
+                'farming-experience': 'કૃષિ અનુભવ',
+                'land-size': 'ખેતનું માપ (એકર)',
+                'primary-crops': 'મુખ્ય પાકો',
+                'password': 'પાસવર્ડ',
+                'confirm-password': 'પાસવર્ડની પુષ્ટિ કરો',
+                'select-experience': 'અનુભવ પસંદ કરો',
+                'beginner': 'શરૂઆતી (0-2 વર્ષ)',
+                'intermediate': 'મધ્યમ (3-10 વર્ષ)',
+                'experienced': 'અનુભવી (10+ વર્ષ)',
+                'expert': 'નિષ્ણાત/સલાહકાર',
+                'create-account-btn': 'કિસાન સર્કલ ખાતું બનાવો',
+                'have-account': 'પહેલાથી ખાતું છે?',
+                'login-here': 'અહીં લૉગિન કરો'
+            }
+        };
+
+        // Language functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageSelect = document.getElementById('languageSelect');
+            const registerForm = document.getElementById('registerForm');
+            
+            // Load saved language preference
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+            languageSelect.value = savedLanguage;
+            changeLanguage(savedLanguage);
+            
+            // Language change handler
+            languageSelect.addEventListener('change', function() {
+                const selectedLanguage = this.value;
+                changeLanguage(selectedLanguage);
+                localStorage.setItem('preferredLanguage', selectedLanguage);
+            });
+            
+            // Form submission handler
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('signupName').value;
+                const phone = document.getElementById('signupPhone').value;
+                const email = document.getElementById('signupEmail').value;
+                const location = document.getElementById('signupLocation').value;
+                const experience = document.getElementById('signupExperience').value;
+                const landSize = document.getElementById('signupLandSize').value;
+                const crops = document.getElementById('signupCrops').value.split(',').map(c => c.trim());
+                const password = document.getElementById('signupPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                // Validation
+                if (!name || !phone || !email || !location || !experience || !crops || !password) {
+                    showNotification('Please fill in all required fields', 'error');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    showNotification('Passwords do not match', 'error');
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    showNotification('Password must be at least 6 characters long', 'error');
+                    return;
+                }
+                
+                // Create user account
+                const currentUser = {
+                    id: 'user_' + Date.now(),
+                    name,
+                    email,
+                    phone,
+                    location,
+                    experience,
+                    landSize: landSize || 0,
+                    crops,
+                    joinedDate: new Date().toISOString(),
+                    avatar: name.charAt(0).toUpperCase()
+                };
+                
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                
+                // Show success message and redirect
+                showNotification('Account created successfully! Redirecting...', 'success');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            });
+        });
+        
+        function changeLanguage(language) {
+            if (translations[language]) {
+                Object.keys(translations[language]).forEach(key => {
+                    const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+                    elements.forEach(element => {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = translations[language][key];
+                        } else if (element.tagName === 'OPTION') {
+                            element.textContent = translations[language][key];
+                        } else {
+                            element.textContent = translations[language][key];
+                        }
+                    });
+                });
+                document.documentElement.lang = language;
+            }
+        }
+
+        // Simple notification system
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 3000;
+                animation: slideInRight 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    document.body.removeChild(notification);
+                }
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

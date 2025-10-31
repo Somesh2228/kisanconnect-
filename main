@@ -1,0 +1,7 @@
+0000000000000000000000000000000000000000 db30ab4656913f2f696a6f3cd27d969d93734c76 Developer <developer@example.com> 1757529892 +0530	commit (initial): feat: initial project setup with comprehensive structure
+db30ab4656913f2f696a6f3cd27d969d93734c76 db30ab4656913f2f696a6f3cd27d969d93734c76 Tanmay bamdale <bamdaletanmay@gmail.com> 1757532736 +0530	Branch: renamed refs/heads/master to refs/heads/main
+db30ab4656913f2f696a6f3cd27d969d93734c76 2f869dbcd7c819e4d097e8e9cf83e731aafa020e Tanmay bamdale <bamdaletanmay@gmail.com> 1757535016 +0530	commit: 🌾 Transform to Multilingual Agricultural Platform
+2f869dbcd7c819e4d097e8e9cf83e731aafa020e e13898d8e737b1bb000220e653f4058b843197fb Tanmay bamdale <bamdaletanmay@gmail.com> 1757541745 +0530	commit: Enhanced homepage button functionality and modal features
+e13898d8e737b1bb000220e653f4058b843197fb 3da2840c53959c26543bae6f3c04d7ee19978f32 Tanmay bamdale <bamdaletanmay@gmail.com> 1757542171 +0530	commit (merge): Merge remote-tracking branch 'origin/main' into main
+3da2840c53959c26543bae6f3c04d7ee19978f32 d566e258b07e1aa75223a321282f6a1fe964f51e Tanmay bamdale <bamdaletanmay@gmail.com> 1757543428 +0530	commit: Add comprehensive dummy data and realistic user interactions
+d566e258b07e1aa75223a321282f6a1fe964f51e 073b2967e1327a4b2e80187728896313bff980dc Tanmay bamdale <bamdaletanmay@gmail.com> 1757548158 +0530	commit: Fix submodule issue: Convert kisan-circle from submodule to regular directory

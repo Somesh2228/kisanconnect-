@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Kisan Circle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Login Page Specific Styles */
+        .login-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 1000px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+        
+        .login-banner {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .login-banner i {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #81C784;
+        }
+        
+        .login-banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .login-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .login-form-container {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .login-form-container h2 {
+            color: #1B5E20;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .login-subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2E7D32;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #E8F5E8;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #F9FBE7;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-btn:hover {
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.3);
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .forgot-password a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .forgot-password a:hover {
+            color: #2E7D32;
+            text-decoration: underline;
+        }
+        
+        .signup-link {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #E8F5E8;
+        }
+        
+        .signup-link a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .signup-link a:hover {
+            color: #2E7D32;
+        }
+        
+        .back-to-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(-5px);
+        }
+        
+        /* Language Selector for Login Page */
+        .login-language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .login-language-selector select {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+        
+        .login-language-selector select option {
+            background: #2E7D32;
+            color: white;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            
+            .login-banner {
+                padding: 2rem;
+                min-height: 200px;
+            }
+            
+            .login-banner h1 {
+                font-size: 2rem;
+            }
+            
+            .login-form-container {
+                padding: 2rem;
+            }
+            
+            .back-to-home {
+                position: static;
+                margin-bottom: 1rem;
+                align-self: flex-start;
+            }
+            
+            .login-language-selector {
+                position: static;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-page">
+        <a href="index.html" class="back-to-home">
+            <i class="fas fa-arrow-left"></i>
+            <span data-translate="back-to-home">Back to Home</span>
+        </a>
+        
+        <div class="login-language-selector">
+            <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+                <option value="mr">मराठी</option>
+                <option value="gu">ગુજરાતી</option>
+            </select>
+        </div>
+        
+        <div class="login-container">
+            <div class="login-banner">
+                <i class="fas fa-seedling"></i>
+                <h1 data-translate="welcome-back">Welcome Back!</h1>
+                <p data-translate="login-banner-text">Join thousands of farmers in India's largest digital agriculture community. Connect, learn, and grow together.</p>
+            </div>
+            
+            <div class="login-form-container">
+                <h2 data-translate="login-to-account">Login to Your Account</h2>
+                <p class="login-subtitle" data-translate="login-subtitle">Enter your credentials to access your Kisan Circle account</p>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label data-translate="phone-email">Phone Number or Email</label>
+                        <input type="text" id="loginCredential" required placeholder="Enter your phone or email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-translate="password">Password</label>
+                        <input type="password" id="loginPassword" required placeholder="Enter your password">
+                    </div>
+                    
+                    <button type="submit" class="login-btn" data-translate="login-btn">Login to Kisan Circle</button>
+                    
+                    <div class="forgot-password">
+                        <a href="#" data-translate="forgot-password">Forgot your password?</a>
+                    </div>
+                    
+                    <div class="signup-link">
+                        <span data-translate="no-account">Don't have an account?</span>
+                        <a href="register.html" data-translate="create-account">Create Account</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Translation system for login page
+        const translations = {
+            'en': {
+                'back-to-home': 'Back to Home',
+                'welcome-back': 'Welcome Back!',
+                'login-banner-text': 'Join thousands of farmers in India\'s largest digital agriculture community. Connect, learn, and grow together.',
+                'login-to-account': 'Login to Your Account',
+                'login-subtitle': 'Enter your credentials to access your Kisan Circle account',
+                'phone-email': 'Phone Number or Email',
+                'password': 'Password',
+                'login-btn': 'Login to Kisan Circle',
+                'forgot-password': 'Forgot your password?',
+                'no-account': 'Don\'t have an account?',
+                'create-account': 'Create Account'
+            },
+            'hi': {
+                'back-to-home': 'होम पर वापस जाएं',
+                'welcome-back': 'वापस आपका स्वागत है!',
+                'login-banner-text': 'भारत के सबसे बड़े डिजिटल कृषि समुदाय में हजारों किसानों के साथ जुड़ें। जुड़ें, सीखें और एक साथ बढ़ें।',
+                'login-to-account': 'अपने खाते में लॉगिन करें',
+                'login-subtitle': 'अपने किसान सर्कल खाते तक पहुंचने के लिए अपना विवरण दर्ज करें',
+                'phone-email': 'फोन नंबर या ईमेल',
+                'password': 'पासवर्ड',
+                'login-btn': 'किसान सर्कल में लॉगिन करें',
+                'forgot-password': 'पासवर्ड भूल गए?',
+                'no-account': 'कोई खाता नहीं है?',
+                'create-account': 'खाता बनाएं'
+            },
+            'mr': {
+                'back-to-home': 'घरी परत जा',
+                'welcome-back': 'परत आपले स्वागत!',
+                'login-banner-text': 'भारताच्या सर्वात मोठ्या डिजिटल कृषी समुदायात हजारो शेतकऱ्यांसोबत सामील व्हा। जोडा, शिका आणि एकत्र वाढा.',
+                'login-to-account': 'आपल्या खात्यात लॉगिन करा',
+                'login-subtitle': 'तुमच्या किसान सर्कल खात्यात प्रवेश करण्यासाठी तुमचे तपशील टाका',
+                'phone-email': 'फोन नंबर किंवा ईमेल',
+                'password': 'पासवर्ड',
+                'login-btn': 'किसान सर्कल मध्ये लॉगिन करा',
+                'forgot-password': 'पासवर्ड विसरलात?',
+                'no-account': 'कोणते खाते नाही?',
+                'create-account': 'खाते तयार करा'
+            },
+            'gu': {
+                'back-to-home': 'ઘર પાછા જાઓ',
+                'welcome-back': 'પાછા આવવા બદલ આભાર!',
+                'login-banner-text': 'ભારતના સૌથી મોટા ડિજિટલ કૃષિ સમુદાયમાં હજારો ખેડૂતો સાથે જોડાઓ. જોડાઓ, શીખો અને સાથે વધો.',
+                'login-to-account': 'તમારા ખાતામાં લૉગિન કરો',
+                'login-subtitle': 'તમારા કિસાન સર્કલ ખાતામાં પ્રવેશ કરવા માટે તમારી વિગતો દાખલ કરો',
+                'phone-email': 'ફોન નંબર અથવા ઈમેલ',
+                'password': 'પાસવર્ડ',
+                'login-btn': 'કિસાન સર્કલમાં લૉગિન કરો',
+                'forgot-password': 'પાસવર્ડ ભૂલી ગયા?',
+                'no-account': 'કોઈ ખાતું નથી?',
+                'create-account': 'ખાતું બનાવો'
+            }
+        };
+
+        // Language functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageSelect = document.getElementById('languageSelect');
+            const loginForm = document.getElementById('loginForm');
+            
+            // Load saved language preference
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+            languageSelect.value = savedLanguage;
+            changeLanguage(savedLanguage);
+            
+            // Language change handler
+            languageSelect.addEventListener('change', function() {
+                const selectedLanguage = this.value;
+                changeLanguage(selectedLanguage);
+                localStorage.setItem('preferredLanguage', selectedLanguage);
+            });
+            
+            // Form submission handler
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const credential = document.getElementById('loginCredential').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                if (credential && password) {
+                    // Simulate authentication
+                    const currentUser = {
+                        id: 'user_' + Date.now(),
+                        name: credential.includes('@') ? 'Farmer User' : credential,
+                        email: credential.includes('@') ? credential : `${credential}@farmer.in`,
+                        phone: credential.includes('@') ? '9876543210' : credential,
+                        location: 'Maharashtra, India',
+                        experience: 'intermediate',
+                        crops: ['Rice', 'Cotton'],
+                        joinedDate: new Date().toISOString(),
+                        avatar: credential.charAt(0).toUpperCase()
+                    };
+                    
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    
+                    // Show success message and redirect
+                    showNotification('Successfully logged in! Redirecting...', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                } else {
+                    showNotification('Please fill in all fields', 'error');
+                }
+            });
+        });
+        
+        function changeLanguage(language) {
+            if (translations[language]) {
+                Object.keys(translations[language]).forEach(key => {
+                    const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+                    elements.forEach(element => {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = translations[language][key];
+                        } else {
+                            element.textContent = translations[language][key];
+                        }
+                    });
+                });
+                document.documentElement.lang = language;
+            }
+        }
+
+        // Simple notification system
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 3000;
+                animation: slideInRight 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    document.body.removeChild(notification);
+                }
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - Kisan Circle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-seedling"></i>
+                    <span data-translate="site-name">Kisan Circle</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link" data-translate="nav-home">Home</a></li>
+                    <li><a href="community.html" class="nav-link active" data-translate="nav-community">Community</a></li>
+                    <li><a href="experts.html" class="nav-link" data-translate="nav-experts">Experts</a></li>
+                    <li><a href="schemes.html" class="nav-link" data-translate="nav-schemes">Schemes</a></li>
+                    <li><a href="#messages" class="nav-link" data-translate="nav-messages">Messages</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="language-selector">
+                        <select id="languageSelect">
+                            <option value="en">English</option>
+                            <option value="hi">हिंदी</option>
+                            <option value="mr">मराठी</option>
+                            <option value="gu">ગુજરાતી</option>
+                        </select>
+                    </div>
+                    <div class="user-actions" id="userActions">
+                        <a href="login.html" class="btn btn-primary login-btn" data-translate="login">Login</a>
+                        <a href="register.html" class="btn btn-secondary signup-btn" data-translate="signup">Sign Up</a>
+                    </div>
+                    <div class="user-profile" id="userProfile" style="display: none;">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <span class="username" id="currentUsername">Farmer</span>
+                        <div class="profile-dropdown">
+                            <a href="#" data-translate="my-profile">My Profile</a>
+                            <a href="#" data-translate="my-posts">My Posts</a>
+                            <a href="#" data-translate="settings">Settings</a>
+                            <a href="#" data-translate="logout" id="logoutBtn">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Community Feed Section -->
+    <section class="community-feed" style="padding-top: 100px;">
+        <div class="container">
+            <div class="feed-header">
+                <h1 data-translate="community-title">Farmer Community Hub</h1>
+                <button class="btn btn-primary create-post-btn" id="createPostBtn" data-translate="share-experience">Share Your Experience</button>
+            </div>
+
+            <!-- Community Stats -->
+            <div class="community-stats-row">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <h3>12,547</h3>
+                        <p data-translate="active-farmers">Active Farmers</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-comments"></i>
+                    <div>
+                        <h3>2,341</h3>
+                        <p data-translate="daily-posts">Posts Today</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-heart"></i>
+                    <div>
+                        <h3>15,789</h3>
+                        <p data-translate="helpful-answers">Helpful Answers</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>28</h3>
+                        <p data-translate="states-covered">States</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Create Post Form -->
+            <div class="create-post-section" id="createPostSection" style="display: none;">
+                <div class="create-post-card">
+                    <h3 data-translate="create-post-title">Share Your Farming Experience</h3>
+                    <form id="createPostForm">
+                        <div class="form-group">
+                            <label data-translate="post-title">Title</label>
+                            <input type="text" id="postTitle" placeholder="What would you like to share?" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="post-description">Description</label>
+                            <textarea id="postDescription" placeholder="Share your experience, tips, or ask questions..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="post-category">Category</label>
+                            <select id="postCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="crop-tips">Crop Tips</option>
+                                <option value="pest-control">Pest Control</option>
+                                <option value="irrigation">Irrigation</option>
+                                <option value="fertilizer">Fertilizer</option>
+                                <option value="weather">Weather & Climate</option>
+                                <option value="equipment">Equipment & Tools</option>
+                                <option value="market-price">Market Prices</option>
+                                <option value="success-story">Success Story</option>
+                                <option value="question">Question/Help</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancelPost" data-translate="cancel">Cancel</button>
+                            <button type="submit" class="btn btn-primary" data-translate="post-submit">Share Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="trending-tabs">
+                <button class="tab-btn active" data-category="all" data-translate="all">All</button>
+                <button class="tab-btn" data-category="crop-tips" data-translate="crop-tips">Crop Tips</button>
+                <button class="tab-btn" data-category="pest-control" data-translate="pest-control">Pest Control</button>
+                <button class="tab-btn" data-category="success-story" data-translate="success-stories">Success Stories</button>
+                <button class="tab-btn" data-category="question" data-translate="questions">Questions</button>
+            </div>
+
+            <!-- Posts Feed -->
+            <div class="posts-feed" id="postsFeed">
+                <!-- Posts will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .community-stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #F1F8E9;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #4CAF50;
+            transform: translateY(-3px);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: #4CAF50;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1B5E20;
+            margin: 0;
+        }
+
+        .stat-card p {
+            color: #666;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+    </style>
+
+    <script src="dummy-data.js"></script>
+    <script src="messaging.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Community page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load realistic dummy posts from DummyData
+            loadRealisticDummyPosts();
+            
+            // Update community stats with real data
+            updateCommunityStats();
+            
+            // Setup create post functionality
+            setupCreatePost();
+            
+            // Setup filter tabs
+            setupFilterTabs();
+            
+            // Check for logged in user
+            checkUserStatus();
+        });
+        
+        function updateCommunityStats() {
+            // Update stats with dynamic data from DummyData
+            const statCards = document.querySelectorAll('.stat-card h3');
+            if (statCards.length >= 4) {
+                statCards[0].textContent = DummyData.users.length.toLocaleString();
+                statCards[1].textContent = DummyData.posts.length.toLocaleString();
+                statCards[2].textContent = DummyData.consultations.filter(c => c.status === 'Completed').length.toLocaleString();
+                statCards[3].textContent = '28'; // States covered
+            }
+        }
+        
+        function loadRealisticDummyPosts() {
+            // Use the realistic posts from DummyData
+            renderPosts(DummyData.posts);
+        }
+
+        function setupFilterTabs() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    const category = tab.dataset.category;
+                    const filteredPosts = category === 'all' ? DummyData.posts : DummyData.posts.filter(post => post.category === category);
+                    renderPosts(filteredPosts);
+                    showNotification(`Showing ${category === 'all' ? 'all' : getCategoryName(category)} posts`, 'info');
+                });
+            });
+        }
+
+        function renderPosts(posts) {
+            const postsContainer = document.getElementById('postsFeed');
+            postsContainer.innerHTML = '';
+
+            posts.forEach(post => {
+                const postElement = createPostElement(post);
+                postsContainer.appendChild(postElement);
+            });
+        }
+
+        function createPostElement(post) {
+            const postDiv = document.createElement('div');
+            postDiv.className = 'post-card';
+            
+            const imageHtml = post.image ? `
+                <div class="post-media">
+                    <img src="${post.image}" alt="Post image" onclick="openImageModal('${post.image}')">
+                </div>
+            ` : '';
+            
+            const verifiedBadge = post.author.verified ? '<i class="fas fa-check-circle verified-badge" title="Verified Farmer"></i>' : '';
+
+            postDiv.innerHTML = `
+                <div class="post-header">
+                    <div class="post-avatar">${post.author.avatar}</div>
+                    <div class="post-user-info">
+                        <h4>${post.author.name} ${verifiedBadge}</h4>
+                        <div class="post-meta">${post.author.location} • ${post.timestamp}</div>
+                    </div>
+                    <div class="post-category">${getCategoryName(post.category)}</div>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title">${post.title}</h3>
+                    <p class="post-description">${post.content}</p>
+                    ${imageHtml}
+                </div>
+                <div class="post-actions">
+                    <button class="action-btn" onclick="toggleLike(${post.id})">
+                        <i class="fas fa-heart"></i>
+                        <span class="action-count">${post.likes}</span>
+                    </button>
+                    <button class="action-btn" onclick="toggleComments(${post.id})">
+                        <i class="fas fa-comment"></i>
+                        <span class="action-count">${post.comments}</span>
+                    </button>
+                    <button class="action-btn" onclick="sharePost(${post.id})">
+                        <i class="fas fa-share"></i>
+                        <span class="action-count">${post.shares}</span>
+                    </button>
+                    <button class="action-btn" onclick="messageAuthor('${post.author.name}')">
+                        <i class="fas fa-envelope"></i>
+                        <span>Message</span>
+                    </button>
+                </div>
+            `;
+            
+            return postDiv;
+        }
+
+        function getCategoryName(category) {
+            const categories = {
+                'crop-tips': 'Crop Tips',
+                'pest-control': 'Pest Control',
+                'irrigation': 'Irrigation',
+                'fertilizer': 'Fertilizer',
+                'weather': 'Weather',
+                'equipment': 'Equipment',
+                'market-price': 'Market Prices',
+                'success-story': 'Success Story',
+                'question': 'Question/Help'
+            };
+            return categories[category] || category;
+        }
+
+        function setupCreatePost() {
+            const createPostBtn = document.getElementById('createPostBtn');
+            const createPostSection = document.getElementById('createPostSection');
+            const cancelBtn = document.getElementById('cancelPost');
+            
+            createPostBtn?.addEventListener('click', () => {
+                const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+                if (!currentUser) {
+                    showNotification('Please login to share your experience!', 'info');
+                    setTimeout(() => window.location.href = 'login.html', 1000);
+                    return;
+                }
+                createPostSection.style.display = createPostSection.style.display === 'none' ? 'block' : 'none';
+            });
+            
+            cancelBtn?.addEventListener('click', () => {
+                createPostSection.style.display = 'none';
+            });
+        }
+
+
+        function checkUserStatus() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (currentUser) {
+                document.getElementById('userActions').style.display = 'none';
+                document.getElementById('userProfile').style.display = 'flex';
+                document.getElementById('currentUsername').textContent = currentUser.name.split(' ')[0];
+            }
+        }
+
+        function toggleLike(postId) {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (!currentUser) {
+                showNotification('Please login to like posts!', 'info');
+                return;
+            }
+            showNotification('Post liked!', 'success');
+        }
+
+        function toggleComments(postId) {
+            showNotification('Comments feature coming soon!', 'info');
+        }
+
+        function sharePost(postId) {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (!currentUser) {
+                showNotification('Please login to share posts!', 'info');
+                return;
+            }
+            showNotification('Post shared!', 'success');
+        }
+
+        function messageAuthor(authorName) {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (!currentUser) {
+                showNotification('Please login to message other farmers!', 'info');
+                return;
+            }
+            showNotification(`Messaging ${authorName} - feature coming soon!`, 'info');
+        }
+
+        function openImageModal(imageUrl) {
+            // Simple image modal
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 3000;
+                cursor: pointer;
+            `;
+            modal.innerHTML = `<img src="${imageUrl}" style="max-width: 90%; max-height: 90%; border-radius: 10px;">`;
+            modal.addEventListener('click', () => document.body.removeChild(modal));
+            document.body.appendChild(modal);
+        }
+
+        // Notification system
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 3000;
+                animation: slideInRight 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    document.body.removeChild(notification);
+                }
+            }, 3000);
+        }
+
+        // Add verified badge styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .verified-badge {
+                color: #1DA1F2;
+                margin-left: 0.5rem;
+                font-size: 1rem;
+            }
+            
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
